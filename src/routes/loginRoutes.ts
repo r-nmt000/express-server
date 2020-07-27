@@ -1,6 +1,7 @@
 import {NextFunction, Request, Response, Router} from "express";
+import {AppRouter} from "../AppRouter";
 
-const router = Router();
+const router = AppRouter.getInstance();
 
 function requireAuth(req: Request, res: Response, next: NextFunction ): void {
     if (req.session && req.session.loggedIn) {
@@ -29,21 +30,6 @@ router.get('/', (req: Request, res: Response) =>{
         `);
 
     }
-});
-
-router.get('/login', (req: Request, res: Response) => {
-    res.send(`
-      <form method="POST">
-        <div>
-          <label>Email</label>
-          <input name="email" />
-        </div>
-        <div>
-          <label>Password</label>
-          <input name="password" type="password" />
-        </div>
-        <button>Submit</button>
-    `);
 });
 
 router.post('/login', (req: Request, res: Response) => {

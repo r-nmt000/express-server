@@ -1,5 +1,4 @@
 import 'reflect-metadata'
-import express from 'express';
 import { AppRouter } from "../AppRouter";
 
 export function controller(routePrefix: string) {
@@ -10,9 +9,8 @@ export function controller(routePrefix: string) {
             const path = Reflect.getMetadata('path', target.prototype, key);
 
             if (path) {
-                router.get(`${routePrefix}${path}`);
+                router.get(`${routePrefix}${path}`, routeHandler);
             }
         }
     }
-
 }
