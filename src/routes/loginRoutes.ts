@@ -12,25 +12,25 @@ function requireAuth(req: Request, res: Response, next: NextFunction ): void {
     res.send('Not permitted');
 }
 
-router.get('/', (req: Request, res: Response) =>{
-    if (req.session && req.session.loggedIn) {
-        res.send(`
-          <div>
-            <div>Your are logged in</div>
-            <a href="/logout">Logout</a>
-          </div>
-        `);
-
-    } else {
-        res.send(`
-          <div>
-            <div>Your are not logged in</div>
-            <a href="/login">Login</a>
-          </div>
-        `);
-
-    }
-});
+// router.get('/', (req: Request, res: Response) =>{
+//     if (req.session && req.session.loggedIn) {
+//         res.send(`
+//           <div>
+//             <div>Your are logged in</div>
+//             <a href="/logout">Logout</a>
+//           </div>
+//         `);
+//
+//     } else {
+//         res.send(`
+//           <div>
+//             <div>Your are not logged in</div>
+//             <a href="/login">Login</a>
+//           </div>
+//         `);
+//
+//     }
+// });
 
 router.post('/login', (req: Request, res: Response) => {
     const { email, password } = req.body;
